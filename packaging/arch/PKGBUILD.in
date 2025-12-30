@@ -1,0 +1,15 @@
+pkgname=cockpit-sap-bone
+pkgver=VERSION
+pkgrel=1
+pkgdesc='Cockpit Module for SAP Business One Installation'
+arch=('x86_64')
+url='https://github.com/SUSE/cockpit-sap-bone'
+license=(LGPL)
+source=("SOURCE")
+sha256sums=('SKIP')
+
+package() {
+  depends=(cockpit)
+  cd $pkgname
+  make DESTDIR="$pkgdir" install PREFIX=/usr
+}
