@@ -1,0 +1,15 @@
+Start installation with following parameters:
+{'hosts': '', 'sid': 'ACD'}
+Start partitioning
+{'name': '', 'free': 0}
+Traceback (most recent call last):
+  File "/home/varkoly/GIT/varkoly/cockpit-sap-inst/src/bin/./sap_install.py", line 387, in <module>
+    do_install()
+    ~~~~~~~~~~^^
+  File "/home/varkoly/GIT/varkoly/cockpit-sap-inst/src/bin/./sap_install.py", line 350, in do_install
+    do_partitions()
+    ~~~~~~~~~~~~~^^
+  File "/home/varkoly/GIT/varkoly/cockpit-sap-inst/src/bin/./sap_install.py", line 264, in do_partitions
+    if free_slot['size'] == 0:
+       ~~~~~~~~~^^^^^^^^
+KeyError: 'size'

@@ -1,0 +1,80 @@
+---
+# Playbook to create a LVM on one ore more empty harddisks for SAP systems with given partitions.
+# This playbook uses following ansible modules:
+# set_fact: to 
+# parted: to create the necessary partitions
+# package: to install the necessary software
+# lvg: to create the logical volume group
+# lvol: to create the logical volumes (partitions)
+# filesystem: to formate the partitions
+# file: to create the mount points
+# mount: to mount the partitions to the mount points and insert this into the fstab to be persistent
+#
+- name: playbook for creating flexible LVM partitioning
+  hosts: "{{ hosts }}"
+  become: true
+
+  tasks:
+    - name: Stringvariable erstellen
+      set_fact:
+        disks_string: "{{ disks | map('regex_replace', '$', '1') | join(',') }}"
+
+    - name: create partition
+      parted:
+        device: "{{ item }}"
+        number: 1
+        flags: [ lvm ]
+        state: present
+        part_end: 100%
+      loop: "{{ disks }}"
+
+    - name: Install lvm2 dependency
+      package:
+        name: lvm2
+        state: present
+
+    - name: task for creating volume group on "{{ disks_string }}"
+      lvg:
+          vg: sap
+          pvs: "{{ disks_string }}"
+          pesize: 16
+
+    - name: task for creating logical volume
+      lvol:
+          vg: "{{ lvg_name }}"
+          lv: "{{ item.name }}"
+          size: "{{ item.size }}"
+          state: present
+      loop: "{{ lvs }}"
+
+    - name: Formatieren der LVs mit dem angegebenen Dateisystem
+      filesystem:
+        fstype: "{{ item.fstype }}"
+        dev: "/dev/{{ lvg_name }}/{{ item.name }}"
+      loop: "{{ lvs }}"
+
+    - name: Erstelle Mountpoints-Verzeichnisse
+      file:
+        path: "{{ item.mount_point }}"
+        state: directory
+        owner: root
+        group: root
+        mode: '0755'
+      loop: "{{ lvs }}"
+
+    - name: Mounten der LV-Volumes
+      mount:
+        path: "{{ item.mount_point }}"
+        src: "/dev/{{ lvg_name }}/{{ item.name }}"
+        fstype: "{{ item.fstype }}"
+        state: mounted
+      loop: "{{ lvs }}"
+
+    - name: Eintragen in /etc/fstab
+      mount:
+        path: "{{ item.mount_point }}"
+        src: "/dev/{{ lvg_name }}/{{ item.name }}"
+        fstype: "{{ item.fstype }}"
+        opts: defaults
+        state: present
+      loop: "{{ lvs }}"

@@ -1,0 +1,27 @@
+- logicalVolumes:
+  - fstype: xfs
+    mount_point: /hana/data
+    name: lv_hanadata
+    size: 1RAM
+    size_max: ''
+    size_min: 20G
+  - fstype: xfs
+    mount_point: /hana/log
+    name: lv_hanalog
+    size: 0.5RAM
+    size_max: 512G
+    size_min: 10G
+  - fstype: xfs
+    mount_point: /hana/shared
+    name: lv_hanashared
+    size: 1RAM
+    size_max: 1TB
+    size_min: 20G
+  - fstype: xfs
+    mount_point: /usr/sap
+    name: lv_usr_sap
+    size: 50G
+    size_max: ''
+    size_min: ''
+  name: vg_hana
+  physicalVolumes: []

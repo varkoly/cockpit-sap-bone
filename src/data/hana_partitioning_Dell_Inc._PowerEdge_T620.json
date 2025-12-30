@@ -1,0 +1,36 @@
+[
+    {
+        "name": "vg_hana",
+        "physicalVolumes": [
+            {
+                "name": "/dev/sdb"
+            }
+        ],
+        "logicalVolumes": [
+            {
+                "name": "lv_hanashared",
+                "size_min": "1RAM",
+                "size": "17%",
+                "size_max": "",
+                "mount_point": "/hana/shared",
+                "fstype": "ext3"
+            },
+            {
+                "name": "lv_usr_sap",
+                "size_min": "1RAM",
+                "size": "17%",
+                "size_max": "",
+                "mount_point": "/usr/sap",
+                "fstype": "ext3"
+            },
+            {
+                "name": "lv_hanadata",
+                "size_min": "3RAM",
+                "size": "max",
+                "size_max": "",
+                "mount_point": "/hana/data",
+                "fstype": "xfs"
+            }
+        ]
+    }
+]

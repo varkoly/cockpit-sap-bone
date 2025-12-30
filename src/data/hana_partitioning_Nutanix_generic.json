@@ -1,0 +1,92 @@
+[
+    {
+        "name": "hanalog",
+        "physicalVolumes": [
+            {
+                "name": "/dev/sdb"
+            },
+            {
+                "name": "/dev/sdc"
+            },
+            {
+                "name": "/dev/sdd"
+            },
+            {
+                "name": "/dev/sde"
+            }
+        ],
+        "logicalVolumes": [
+            {
+                "name": "hanalog-vol",
+                "size_min": "0.5RAM",
+                "size": "",
+                "size_max": "512G",
+                "mount_point": "/hana/log",
+                "fstype": "xfs"
+            }
+        ]
+    },
+    {
+        "name": "hanadata",
+        "physicalVolumes": [
+            {
+                "name": "/dev/sdf"
+            },
+            {
+                "name": "/dev/sdg"
+            },
+            {
+                "name": "/dev/sdh"
+            },
+            {
+                "name": "/dev/sdi"
+            }
+        ],
+        "logicalVolumes": [
+            {
+                "name": "hanadata-vol",
+                "size_min": "2.5RAM",
+                "size": "max",
+                "size_max": "",
+                "mount_point": "/hana/data",
+                "fstype": "xfs"
+            }
+        ]
+    },
+    {
+        "name": "hanashared",
+        "physicalVolumes": [
+            {
+                "name": "/dev/sdj"
+            }
+        ],
+        "logicalVolumes": [
+            {
+                "name": "hanashared-vol",
+                "size_min": "1RAM",
+                "size": "",
+                "size_max": "1TiB",
+                "mount_point": "/hana/shared",
+                "fstype": "xfs"
+            }
+        ]
+    },
+    {
+        "name": "usrsap",
+        "physicalVolumes": [
+            {
+                "name": "/dev/sdk"
+            }
+        ],
+        "logicalVolumes": [
+            {
+                "name": "usrsap-vol",
+                "size_min": "",
+                "size": "max",
+                "size_max": "",
+                "mount_point": "/usr/sap",
+                "fstype": "xfs"
+            }
+        ]
+    }
+]

@@ -1,0 +1,74 @@
+[
+    {
+        "name": "vg_hana_log",
+        "physicalVolumes": [
+            {
+                "name": "/dev/sdb"
+            }
+        ],
+        "logicalVolumes": [
+            {
+                "name": "lv_log",
+                "size_min": "",
+                "size": "512G",
+                "size_max": "",
+                "mount_point": "/hana/log",
+                "fstype": "xfs"
+            }
+        ]
+    },
+    {
+        "name": "vg_hana_shared",
+        "physicalVolumes": [
+            {
+                "name": "/dev/sdc"
+            }
+        ],
+        "logicalVolumes": [
+            {
+                "name": "lv_shared",
+                "size_min": "",
+                "size": "1536G",
+                "size_max": "",
+                "mount_point": "/hana/shared",
+                "fstype": "xfs"
+            }
+        ]
+    },
+    {
+        "name": "vg_hana_usrsap",
+        "physicalVolumes": [
+            {
+                "name": "/dev/sdd"
+            }
+        ],
+        "logicalVolumes": [
+            {
+                "name": "lv_usrsap",
+                "size_min": "",
+                "size": "64G",
+                "size_max": "",
+                "mount_point": "/usr/sap",
+                "fstype": "xfs"
+            }
+        ]
+    },
+    {
+        "name": "vg_hana_data",
+        "physicalVolumes": [
+            {
+                "name": "/dev/sde"
+            }
+        ],
+        "logicalVolumes": [
+            {
+                "name": "lv_data",
+                "size_min": "",
+                "size": "max",
+                "size_max": "",
+                "mount_point": "/hana/data",
+                "fstype": "xfs"
+            }
+        ]
+    }
+]

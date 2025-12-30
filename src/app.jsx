@@ -1,3 +1,4 @@
+// ts-nocheck
 /*
  * This file is part of Cockpit.
  *
@@ -18,17 +19,14 @@
  */
 
 import React, { useEffect, useState } from 'react';
-import { Alert } from "@patternfly/react-core/dist/esm/components/Alert/index.js";
-import { Card, CardBody, CardTitle } from "@patternfly/react-core/dist/esm/components/Card/index.js";
+import { EmptyStatePanel } from "cockpit-components-empty-state.jsx";
+import cockpit from 'cockpit';
 import { read_os_release } from 'os-release';
+import { SapDataProvider } from './contexts/SapDataContext';
 import disks from './common/disks';
 import MainMenu  from './components/main-menu';
 
-import { EmptyStatePanel } from "cockpit-components-empty-state.jsx";
-import cockpit from 'cockpit';
-
 const _ = cockpit.gettext;
-
 export const Application = () => {
     const [initialized, setInitialized] = useState(false);
     const [osRelease, setOsRelease] = useState({});
@@ -45,6 +43,7 @@ export const Application = () => {
         })
 
     }, []);
+
     if (initialized) {
         return (
             <SapDataProvider>

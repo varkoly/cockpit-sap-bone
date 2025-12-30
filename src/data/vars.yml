@@ -1,0 +1,24 @@
+hosts:
+  - localhost
+disks:
+  - /dev/sdc
+  - /dev/sdb
+lvg_name: "sap"
+lvs:
+  - name: data
+    size: 20G
+    fstype: xfs
+    mount_point: /hana/data
+  - name: log
+    size: 30G
+    fstype: xfs
+    mount_point: /hana/log
+  - name: shared
+    size: 40G
+    fstype: xfs
+    mount_point: /hana/shared
+  - name: usr_sap
+    size: 50G
+    fstype: xfs
+    mount_point: /usr/sap
+
