@@ -1,20 +1,12 @@
-# Cockpit SAP Businesss One Installer
+# Cockpit SAP Business One Installer
 
 A cockpit module for the installation of SAP Business One on SUSE Linux Enterprise Server using the ansible module ansible-sap-bone.
 
 # Development dependencies
 
-On Debian/Ubuntu:
+On SLES openSUSE Tumbleweed and Leap:
 
-    sudo apt install gettext nodejs npm make
-
-On Fedora:
-
-    sudo dnf install gettext nodejs npm make
-
-On openSUSE Tumbleweed and Leap:
-
-    sudo zypper in gettext-runtime nodejs npm make
+    sudo zypper in gettext-runtime nodejs npm make ansible-sap-bone
 
 # Getting and building the source
 
