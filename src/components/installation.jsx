@@ -299,7 +299,7 @@ export const Installation = (props) => {
                 }>
                 {
                     (disks.freeSlots.length > 1) ?
-                        <FormSelect value={sapData.installation.selectedDevice} onChange={handleSelectedDevice} id="sap-inst-device">
+                        <FormSelect value={sapData.installation.device} onChange={handleSelectedDevice} id="sap-inst-device">
                             {disks.freeSlots.map((option, index) => <FormSelectOption key={index} value={option.name} label={option.label} isPlaceholder={option.isPlaceholder} />)}
                         </FormSelect>
                         :
