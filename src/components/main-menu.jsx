@@ -13,7 +13,7 @@ export default function MainMenu(props){
     };
 
     return (
-            <Card>
+            <Card isFullHeight>
                 {props.os.NAME == "SLES" ?
                     <CardTitle>{_("SAP Bussiness One Installer")}</CardTitle>
                     :
@@ -29,7 +29,7 @@ export default function MainMenu(props){
                         </NavList>
                     </Nav>
                 </CardHeader>
-                <CardBody>
+                <CardBody isFilled style={{ overflowY: 'auto' }} tabIndex={0}>
                     {activeItem == 'install' && <Installation os={props.os}/>}
                     {activeItem == 'installed' && <InstalledSystem />}
                 </CardBody>

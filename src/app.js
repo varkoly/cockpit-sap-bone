@@ -23,7 +23,7 @@ import { EmptyStatePanel } from "cockpit-components-empty-state.jsx";
 import cockpit from 'cockpit';
 import { read_os_release } from 'os-release';
 import { SapDataProvider } from './contexts/SapDataContext';
-import disks from './common/disks';
+import { initDisk } from './common/disks';
 import MainMenu  from './components/main-menu';
 
 const _ = cockpit.gettext;
@@ -32,7 +32,7 @@ export const Application = () => {
     const [osRelease, setOsRelease] = useState({});
 
     useEffect(() => {
-        disks.init(() => {
+        initDisk(() => {
             console.log("Disks Initialized")
             read_os_release().then(
                 (val) => {

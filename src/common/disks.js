@@ -40,7 +40,7 @@ function findFreeSlots(){
         }
     }
 }
-disks.init = (callback) => {
+export function initDisk(callback){
     console.log("disk.init called")
     cockpit.spawn(['lsblk','-Jb']).then(
         (value) => {
